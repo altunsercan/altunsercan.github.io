@@ -48,9 +48,6 @@ module.exports = {
       options: {
         contentTypeName: 'Post',
         feedOptions: {
-          title: 'Gridsome Portfolio Starter Blog',
-          feed_url: 'https://gridsome-portfolio-starter.netlify.com/rss.xml',
-          site_url: 'https://gridsome-portfolio-starter.netlify.com/'
           title: 'Sercan Altun\'s Game Development Blog',
           feed_url: 'https://www.sercanaltun.com/rss.xml',
           site_url: 'https://www.sercanaltun.com/'
@@ -58,8 +55,6 @@ module.exports = {
         feedItemOptions: node => ({
           title: node.title,
           description: node.summary,
-          url: 'https://gridsome-portfolio-starter.netlify.com' + node.path,
-          author: 'Andre Madarang',
           url: 'https://www.sercanaltun.com/' + node.path,
           author: 'Sercan Altun',
           date: node.date
