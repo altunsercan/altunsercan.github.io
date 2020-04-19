@@ -78,7 +78,9 @@ module.exports = {
     },
   ],
   templates: {
-    Tag: '/tag/:id'
+    Tag: '/tag/:id',
+    Post: '/blog/:slug',
+    Portfolio: '/portfolio/:slug'
   },
   transformers: {
     remark: {
