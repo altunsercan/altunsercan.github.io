@@ -2,6 +2,11 @@
 
 @tailwind components;
 
+.sidebar{
+  @apply absolute w-64 -mt-16;
+  right: -18rem;
+}
+
 @tailwind utilities;
 
 .theme-light {

@@ -85,6 +85,12 @@ module.exports = {
         'monospace',
       ],
     },
+    right: {
+      '-16': '-4rem',
+      '-32': '-8rem',
+      '-64': '-16rem',
+      '-128': '-32rem',
+    }
   },
   variants: {
     // Some useful comment
