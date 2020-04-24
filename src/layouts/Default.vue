@@ -40,7 +40,10 @@
 
           -->
           <li class="mr-8 mb-6 lg:mb-0">
-            <g-link to="/Portfolio" class="text-copy-primary hover:text-gray-600">Portfolio</g-link>
+            <g-link to="/" class="text-copy-primary hover:text-gray-600">Home</g-link>
+          </li>
+          <li class="mr-8 mb-6 lg:mb-0">
+            <g-link to="/portfolio" class="text-copy-primary hover:text-gray-600">Portfolio</g-link>
           </li>
           <li>
             <g-link to="/blog" class="text-copy-primary hover:text-gray-600">Blog</g-link>
