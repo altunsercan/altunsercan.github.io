@@ -10,6 +10,8 @@ tags: ['Artificial Intelligence', 'test']
 
 # AI vs Game AI
 
+<<div>>Test<</div>>
+
 Artificial Intelligence is a broad field on its own. As you start to work on an AI project it gets highly technical and specialized very quickly. That is why there are many AI applications using variety of algorithms to solve problems. Through my experience I found out that problem dictates the algorithm heavily. As such while most of the algorithms fall into one category or another their approaches are often so distinct that learning one type of AI does not necessarily train you in another.
 
 I took an AI course when I was an undergrad in Bilkent University. The course was not games specific. However I was able to see difference of perspectives between real world AI and games AI. When we look at the usage of AI in games, while there are still variety of algorithms out there, the problems they tackle are bounded in the field of games. That is why I find it easier to understanding the relations between different approaches. However we were able to study applications on games, it was very limited though. While the algorithms used in games are the same there are couple of differences in mentality.
