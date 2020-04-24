@@ -44,6 +44,19 @@ module.exports = {
       }
     },
     {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'portfolio/**/*.md',
+        typeName: 'PortfolioItem',
+        refs: {
+          tags: {
+            typeName: 'PortfolioTag',
+            create: true
+          }
+        }
+      }
+    },
+    {
       use: 'gridsome-plugin-rss',
       options: {
         contentTypeName: 'Post',
@@ -74,8 +87,9 @@ module.exports = {
   ],
   templates: {
     Tag: '/tag/:id',
-    Post: '/blog/:slug',
-    Portfolio: '/portfolio/:slug'
+    Post: '/blog/:path',
+    PortfolioItem: '/portfolio/:path',
+    PortfolioTag: '/portfolio/tag/:id',
   },
   transformers: {
     remark: {
