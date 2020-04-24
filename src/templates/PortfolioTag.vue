@@ -17,7 +17,7 @@
 
     <div class="mx-64 py-4">
       <div class="flex flex-wrap -mx-4">
-        <div v-for="portfolio in $page.portfolios.edges" :key="portfolio.id" class="relative post flex-none border-gray-400 border-none px-4 w-1/4 mb-4">
+        <div v-for="portfolio in $page.currentTag.portfolioItems.edges" :key="portfolio.id" class="relative post flex-none border-gray-400 border-none px-4 w-1/4 mb-4">
           <div class="absolute invisible hover:visible">
             <h2 class="text-3xl font-bold"><g-link :to="portfolio.node.path" class="text-copy-primary">{{ portfolio.node.title }}</g-link></h2>
           </div>
@@ -32,31 +32,39 @@
         </div> <!-- end post -->
       </div>
       <pagination-posts
-        v-if="$page.portfolios.pageInfo.totalPages > 1"
-        base="/portfolio"
-        :totalPages="$page.portfolios.pageInfo.totalPages"
-        :currentPage="$page.portfolios.pageInfo.currentPage"
+        v-if="$page.currentTag.portfolioItems.pageInfo.totalPages > 1"
+        :base="'/portfolio/tag/'+$page.currentTag.title"
+        :totalPages="$page.currentTag.portfolioItems.pageInfo.totalPages"
+        :currentPage="$page.currentTag.portfolioItems.pageInfo.currentPage"
       />
     </div>
   </Layout>
 </template>
 
 <page-query>
-query Portfolio ($page: Int) {
-  portfolios: allPortfolioItem (sortBy: "date", order: DESC, perPage: 8, page: $page) @paginate {
-    totalCount
-    pageInfo {
-      totalPages
-      currentPage
-    }
-    edges {
-      node {
-        id
-        title
-        date (format: "MMMM D, Y")
-        summary
-        path
-        thumbnailImage
+query Portfolio ($path: String!, $page: Int) {
+  currentTag: portfolioTag(path: $path)
+  {
+    id
+    title
+    portfolioItems: belongsTo(sortBy: "date", order: DESC, perPage: 8, page: $page) @paginate
+    {
+      totalCount
+      pageInfo {
+        totalPages
+        currentPage
+      }
+      edges {
+         node {
+          id
+          ... on PortfolioItem {
+            title
+            date (format: "MMMM D, Y")
+            summary
+            path
+            thumbnailImage
+          }
+         }
       }
     }
   }
