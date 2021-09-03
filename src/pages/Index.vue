@@ -76,6 +76,28 @@ export default {
     meta: [
       { key: 'description', name: 'description', content: 'Gameplay programmer specialized in AI. Proud owner of MA. in Game Design and procedural narrative generation thesis. Using Unity3D and C# to deliver dreams.' }
     ],
+    script: [{
+      type: 'application/ld+json',
+      json: {
+        "@context": "http://schema.org/",
+        "@type": "AboutPage",
+        "name": "Sercan Altun | Gameplay & AI Programmer",
+        "about": {
+           "@type": "Person",
+           "jobTitle": "Gameplay & AI Programmer",
+           "name": "Sercan Altun",
+           "givenName": "Sercan",
+           "familyName": "Altun",
+	         "birthPlace": "Adana, Turkey",
+           "gender": "male",
+           "nationality": "Turkish",
+           "url": "http://sercanaltun.com",
+	         "sameAs" : [
+             "https://www.linkedin.com/in/sercanaltun/",
+           "https://twitter.com/sercanaltun"]       
+         }
+       }
+    }]
   }
 }
 </script>
