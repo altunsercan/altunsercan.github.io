@@ -18,7 +18,6 @@
       <p class="text-lg sm:text-xl">
         I am Sercan Altun: video game developer, coding aficionado & part-time weirdo.
         If you are here for checking out my work head over to portfolio. You might find something that interests you.
-        Kindred spirits may find game development related posts under the section radically named “blog“.
       </p>
       <!--
       <div class="flex justify-between items-center py-6">
