@@ -2,6 +2,12 @@
 // This is a placeholder index page for the Astro migration
 // The actual content will be migrated from the existing Index.vue page
 import '../styles/global.css';
+import { getCollection } from 'astro:content';
+
+// Test content collections
+const blogPosts = await getCollection('blog');
+const portfolioItems = await getCollection('portfolio');
+const docs = await getCollection('docs');
 ---
 
 <html lang="en">
@@ -22,6 +28,16 @@ import '../styles/global.css';
 				<h2 class="text-2xl font-bold mb-4">Astro Migration in Progress</h2>
 				<p class="mb-4">This site is currently being migrated from Gridsome to Astro.</p>
 				<p class="text-copy-secondary">The development server is running on port 8080 as configured.</p>
+				
+				<!-- Test content collections -->
+				<div class="mt-6">
+					<h3 class="text-lg font-semibold mb-2">Content Collections Status:</h3>
+					<ul class="text-sm space-y-1">
+						<li>Blog Posts: {blogPosts.length} found</li>
+						<li>Portfolio Items: {portfolioItems.length} found</li>
+						<li>Documentation: {docs.length} found</li>
+					</ul>
+				</div>
 			</div>
 		</main>
 	</body>
