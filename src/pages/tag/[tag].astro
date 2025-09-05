@@ -56,7 +56,9 @@ const getReadingTime = (content: string) => {
 
 <BaseLayout 
   title={`Posts tagged "${displayTag}"`}
-  description={`Blog posts tagged with ${displayTag}`}
+  description={`Blog posts tagged with ${displayTag} - Game Development, Unity3D, C#`}
+  keywords={`${displayTag}, Game Development, Unity3D, C#, Blog`}
+  canonical={`https://altunsercan.github.io/tag/${tag}`}
 >
   <div class="container-inner mx-auto py-16">
     <h1 class="text-4xl font-bold mb-8">Posts tagged "{displayTag}"</h1>

@@ -21,14 +21,26 @@ const formatDate = (date: Date) => {
   });
 };
 
-// Generate meta title
+// Generate meta title and structured data
 const metaTitle = entry.data.title;
 const metaDescription = entry.data.summary || entry.data.excerpt || `Portfolio item: ${entry.data.title}`;
+const publishedTime = entry.data.date.toISOString();
+const metaKeywords = entry.data.tags ? `${entry.data.tags.join(', ')}, Game Development, Unity3D, C#, Portfolio` : 'Game Development, Unity3D, C#, Portfolio';
+const canonicalUrl = `https://altunsercan.github.io/portfolio/${entry.slug}`;
+const portfolioImage = entry.data.thumbnailImage || entry.data.featured_image || entry.data.image;
 ---
 
 <BaseLayout 
   title={metaTitle} 
   description={metaDescription}
+  type="article"
+  publishedTime={publishedTime}
+  modifiedTime={publishedTime}
+  tags={entry.data.tags}
+  section="Portfolio"
+  keywords={metaKeywords}
+  canonical={canonicalUrl}
+  image={portfolioImage}
 >
   <div class="container-inner mx-auto my-16">
     <h1 class="text-4xl font-bold leading-tight">{entry.data.title}</h1>

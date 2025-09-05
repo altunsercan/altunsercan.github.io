@@ -2,36 +2,17 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Game Developer - Sercan Altun: Unity3D, C#, Game AI, Extenject';
 const description = 'Gameplay programmer specialized in AI. Proud owner of MA. in Game Design and procedural narrative generation thesis. Using Unity3D and C# to deliver dreams.';
-
-// JSON-LD structured data
-const jsonLd = {
-  "@context": "http://schema.org/",
-  "@type": "AboutPage",
-  "name": "Sercan Altun | Gameplay & AI Programmer",
-  "about": {
-     "@type": "Person",
-     "jobTitle": "Gameplay & AI Programmer",
-     "name": "Sercan Altun",
-     "givenName": "Sercan",
-     "familyName": "Altun",
-     "birthPlace": "Adana, Turkey",
-     "gender": "male",
-     "nationality": "Turkish",
-     "url": "http://sercanaltun.com",
-     "sameAs": [
-       "https://www.linkedin.com/in/sercanaltun/",
-       "https://twitter.com/sercanaltun"
-     ]       
-   }
-};
+const keywords = 'Sercan Altun, Game Developer, Gameplay Programming, Unity3D, C#, Game AI, Extenject, Zenject, Montreal';
+const canonical = 'https://altunsercan.github.io/';
 ---
 
 <BaseLayout 
   title={title}
   description={description}
+  keywords={keywords}
+  canonical={canonical}
+  type="profile"
 >
-  <!-- JSON-LD for structured data -->
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
 
   <div class="hero container-inner mx-auto flex flex-col sm:flex-row justify-between py-10">
     <div class="flex-1 text-4xl font-bold w-full text-center sm:text-left sm:mt-10 lg:mt-16 relative">

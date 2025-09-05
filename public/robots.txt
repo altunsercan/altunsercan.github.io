@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block access to search index
+Disallow: /search.json
+
+# Sitemap location
+Sitemap: https://altunsercan.github.io/sitemap-index.xml
