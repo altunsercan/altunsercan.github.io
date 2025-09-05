@@ -30,8 +30,12 @@
   background: #f0fff4;
 }
 
+.theme-light .markdown-body {
+    color: #2d3748 !important;
+}
+
 .theme-dark .markdown-body {
-    color: #cbd5e0;
+    color: #cbd5e0 !important;
 }
 
 .theme-dark .search-highlighted {
