@@ -1,0 +1,10 @@
+---
+// Import the Vue component
+import SearchInputVue from './SearchInput.vue';
+
+// For Astro, we pass the search data path as a prop
+// The Vue component will handle fetching it on the client side
+---
+
+<!-- Use Vue island for interactive search functionality -->
+<SearchInputVue client:load />

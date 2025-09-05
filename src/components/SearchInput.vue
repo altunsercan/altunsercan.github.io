@@ -56,14 +56,6 @@
 </template>
 
 
-<static-query>
-  {
-    metadata{
-      pathPrefix
-    }
-  }
-</static-query>
-
 <script>
 import axios from 'axios'
 import SearchFocus from './SearchFocus'
@@ -73,7 +65,8 @@ export default {
     SearchFocus,
   },
   created() {
-    axios(this.$static.metadata.pathPrefix + "/search.json").then(response => {
+    // In Astro, we fetch directly from the static directory
+    axios("/search.json").then(response => {
       this.posts = response.data
     })
     .catch(error => {
@@ -109,9 +102,17 @@ export default {
       this.searchResultsVisible = true
     },
     performSearch() {
-      this.$search(this.query, this.posts, this.options).then(results => {
-        this.results = results
-      })
+      if (window.Fuse) {
+        const fuse = new window.Fuse(this.posts, this.options);
+        this.results = fuse.search(this.query);
+      } else {
+        // Fallback if Fuse.js is not available
+        import('fuse.js').then((FuseModule) => {
+          const Fuse = FuseModule.default || FuseModule;
+          const fuse = new Fuse(this.posts, this.options);
+          this.results = fuse.search(this.query);
+        });
+      }
     },
     highlightPrev() {
       if (this.highlightedIndex > 0) {

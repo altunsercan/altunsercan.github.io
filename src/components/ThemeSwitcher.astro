@@ -1,0 +1,13 @@
+---
+// Import the Vue component
+import ThemeSwitcherVue from './ThemeSwitcher.vue';
+
+export interface Props {
+  theme: string;
+}
+
+const { theme } = Astro.props;
+---
+
+<!-- Use Vue island for interactive theme switching -->
+<ThemeSwitcherVue client:load theme={theme} />

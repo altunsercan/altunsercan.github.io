@@ -1,23 +1,17 @@
 ---
-title: Vue Components in Markdown
-excerpt: An example markdown page that has Vue Components inside of it!
+title: Vue Components in Markdown  
+excerpt: An example markdown page demonstrating component usage in Astro!
 ---
-import TestComponent from '~/components/CounterComponent.vue'
-import TransitionComponent from '~/components/TransitionComponent.vue'
 
-Below is a Vue Component from `~/components/CounterComponent.vue`:
+Below is a Counter Component that uses Vue for interactivity:
 
-<test-component />
+*Note: Components are now managed through Astro's component system with Vue islands for interactivity.*
 
-<hr>
-
-Here is another component from `~/components/TransitionComponent.vue`:
-
-<transition-component />
+The CounterComponent and TransitionComponent are available as Vue islands that hydrate on the client side.
 
 <hr>
 
-The ability to use Vue Components in Markdown was added in Gridsome v0.7 with the [vue-remark](https://gridsome.org/plugins/@gridsome/vue-remark) plugin.
+In Astro, Vue components are used as islands for interactive functionality, while static components are converted to native Astro format for better performance.
 
 ```js
 <template>

@@ -1,0 +1,35 @@
+---
+export interface Props {
+  base: string;
+  totalPages: number;
+  currentPage: number;
+}
+
+const { base, totalPages, currentPage } = Astro.props;
+
+// Computed values converted to functions
+const showPreviousPage = currentPage !== 1;
+const previousPage = [0, 1].includes(currentPage - 1)
+  ? base
+  : `${base}/${currentPage - 1}`;
+
+const showNextPage = currentPage !== totalPages;
+const nextPage = totalPages > currentPage
+  ? `${base}/${currentPage + 1}`
+  : `${base}/${currentPage}`;
+
+// CSS classes for disabled state
+const prevClasses = showPreviousPage 
+  ? "" 
+  : "text-gray-400 hover:text-gray-400 cursor-not-allowed";
+
+const nextClasses = showNextPage 
+  ? "" 
+  : "text-gray-400 hover:text-gray-400 cursor-not-allowed";
+---
+
+<div class="flex justify-between text-xl items-center">
+  <a href={previousPage} class={prevClasses}>&larr; Prev</a>
+  <div class="text-base">Page {currentPage} of {totalPages}</div>
+  <a href={nextPage} class={nextClasses}>Next &rarr;</a>
+</div>
