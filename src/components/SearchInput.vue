@@ -58,42 +58,12 @@
 
 <script>
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
-import SearchFocus from './SearchFocus'
+import SearchFocus from './SearchFocus.vue'
 
 export default {
   components: {
     SearchFocus,
   },
-  created() {
-    // In Astro, we fetch directly from the static directory
-    fetch("/search.json")
-      .then(response => response.json())
-      .then(data => {
-        this.posts = data
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  },
-  data() {
-    return {
-      query: '',
-      results: [],
-      posts: [],
-      highlightedIndex: 0,
-      searchResultsVisible: false,
-      options: {
-        shouldSort: true,
-        includeMatches: true,
-        threshold: 0.5,
-        location: 0,
-        distance: 500,
-        maxPatternLength: 32,
-        minMatchCharLength: 1,
-        keys: ['title', 'summary']
-    }
-  }
   setup() {
     const query = ref('')
     const results = ref([])
@@ -116,8 +86,9 @@ export default {
 
     onMounted(async () => {
       try {
-        const response = await axios('/search.json')
-        posts.value = response.data
+        const response = await fetch('/search.json')
+        const data = await response.json()
+        posts.value = data
       } catch (error) {
         console.error('Failed to load search index:', error)
       }
