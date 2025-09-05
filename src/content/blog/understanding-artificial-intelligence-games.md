@@ -37,4 +37,32 @@ I won't be making any claims here. I am neither experienced enough nor well rese
  * **General game AI:** As I mentioned before AI in practice is rather diverse and specific at the same time. Each problem has a different solution. General game AI focuses on doing the opposite, creating AI algorithms that can play any game given the correct configurations.
  * **AI in commercial games:** Distinction between academia and developers is quite simple. Academics want to invent new breakthroughs, developers want things to simply work without complication. While they inspire each other they are often very disjointed at the same time.
  
+Here's a simple example of a search algorithm in JavaScript:
+
+```javascript
+function minimax(board, depth, isMaximizing) {
+  if (depth === 0 || gameOver(board)) {
+    return evaluate(board);
+  }
+  
+  if (isMaximizing) {
+    let maxEval = -Infinity;
+    for (let move of getAllMoves(board)) {
+      let eval = minimax(makeMove(board, move), depth - 1, false);
+      maxEval = Math.max(maxEval, eval);
+    }
+    return maxEval;
+  } else {
+    let minEval = Infinity;
+    for (let move of getAllMoves(board)) {
+      let eval = minimax(makeMove(board, move), depth - 1, true);
+      minEval = Math.min(minEval, eval);
+    }
+    return minEval;
+  }
+}
+```
+
+This minimax algorithm is a perfect example of search and planning AI mentioned above.
+
  [1] A Panorama of Artificial and Computational Intelligence in Games

@@ -10,10 +10,12 @@
     "preview": "astro preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d dist",
-    "astro": "astro"
+    "astro": "astro",
+    "explore": "echo 'GraphQL Explorer not available in Astro. Use Astro dev server at http://localhost:8080'"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.5.1",
+    "@astrojs/rss": "^4.0.9",
+    "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.1",
     "@astrojs/vue": "^4.5.2",
     "astro": "^4.16.9",

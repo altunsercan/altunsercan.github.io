@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import vue from '@astrojs/vue';
+import sitemap from '@astrojs/sitemap';
 import searchIndexIntegration from './integrations/search-index.js';
 
 // https://astro.build/config
@@ -9,15 +10,23 @@ export default defineConfig({
   integrations: [
     tailwind(),
     vue(),
-    searchIndexIntegration(),
-    sitemap()
+    sitemap(),
+    searchIndexIntegration()
   ],
   server: {
     port: 8080,
     host: true
   },
   build: {
-    assets: '_astro'
+    assets: '_astro',
+    // CSS optimization is enabled by default in Astro
+    inlineStylesheets: 'auto'
   },
-  output: 'static'
+  output: 'static',
+  markdown: {
+    shikiConfig: {
+      theme: 'material-theme-palenight',
+      wrap: true
+    }
+  }
 });
