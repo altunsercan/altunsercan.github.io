@@ -1,13 +1,13 @@
 ---
 title: Pets & Planes - Yeti Game Studios
 path: /pets-planes-unity3d-mobile-game
-thumbnailImage: ./images/pets-and-planes-mobile-arcade-racing.jpg
+thumbnailImage: /images/pets-and-planes-mobile-arcade-racing.jpg
 date: 2017-02-13
 summary: Pets & Planes is an arcade racing game for mobile devices. The game has colorful family friendly graphics but intended for all audiences. We developed this project while I was working at Yeti Interactive.
 tags: ['Mobile', 'iOS', 'Android', 'Unity3D', 'Game']
 ---
 
-![background](./images/pets-and-planes-mobile-arcade-racing.jpg)
+![background](/images/pets-and-planes-mobile-arcade-racing.jpg)
 
 # Pets & Planes Arcade Racing Game
 

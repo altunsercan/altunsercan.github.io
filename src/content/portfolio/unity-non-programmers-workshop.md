@@ -1,7 +1,7 @@
 ---
 title: Unity for Non-Programmers Workshop
 path: /unity-non-programmers-workshop
-thumbnailImage: ./images/unity3d-for-designers-workshop.jpg
+thumbnailImage: /images/unity3d-for-designers-workshop.jpg
 date: 2017-02-13
 summary: Modern game engine tools are created to be designer friendly. Yet many artists do not learn these tools. As a result the production bottleneck hits the programmers hard. Since I am one of those programmers, I found it beneficial to fix this problem.
 tags: ['Workshop']

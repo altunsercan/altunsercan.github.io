@@ -6,7 +6,7 @@ summary: Artificial Intelligence is a broad field on its own. As you start to wo
 tags: ['Artificial Intelligence', 'test']
 ---
 
-![background](./images/ai-brain.jpg)
+![background](/images/ai-brain.jpg)
 
 # AI vs Game AI
 

@@ -1,7 +1,7 @@
 ---
 title: Tap Titans 2 - Game Hive
 path: /tap-titans-2-game-hive-unity3d-mobile-development
-thumbnailImage: ./images/mobile-incremental-game-tap-titans-2-logo.jpg
+thumbnailImage: /images/mobile-incremental-game-tap-titans-2-logo.jpg
 date: 2016-08-06
 summary: Tap Titans is the incremental game franchise that popularized the genre in mobile stores. I joined the development of Tap Titans 2 team before its 3.0 release to develop new features.
 tags: ['Mobile', 'iOS', 'Android', 'Unity3D', 'Game']
@@ -10,7 +10,7 @@ tags: ['Mobile', 'iOS', 'Android', 'Unity3D', 'Game']
 
 ::: div relative
  ::: div sidebar
-  ![background](./images/mobile-incremental-game-tap-titans-2.jpg)
+  ![background](/images/mobile-incremental-game-tap-titans-2.jpg)
  :::
 :::
 

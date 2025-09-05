@@ -1,7 +1,7 @@
 ---
 title: Runner Fox - Sillywalk Games
 path: /runner-fox-unity3d-mobile-game
-thumbnailImage: ./images/mobile-game-runner-fox-logo.png
+thumbnailImage: /images/mobile-game-runner-fox-logo.png
 date: 2019-02-22
 summary: Sillywalk Games wanted to produce a runner title for a hyper casual mobile game market. Runner Fox is an endless running game, in which challenges player's reflexes with accelerating difficulty.
 tags: ['Mobile', 'iOS', 'Android', 'Unity3D', 'Game']
@@ -10,7 +10,7 @@ tags: ['Mobile', 'iOS', 'Android', 'Unity3D', 'Game']
 
 ::: div relative
  ::: div sidebar
-  ![background](./images/unity-mobile-game-runner-fox.jpg)
+  ![background](/images/unity-mobile-game-runner-fox.jpg)
  :::
 :::
 

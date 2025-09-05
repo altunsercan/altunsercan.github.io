@@ -57,7 +57,6 @@
 
 
 <script>
-import axios from 'axios'
 import SearchFocus from './SearchFocus'
 
 export default {
@@ -66,12 +65,14 @@ export default {
   },
   created() {
     // In Astro, we fetch directly from the static directory
-    axios("/search.json").then(response => {
-      this.posts = response.data
-    })
-    .catch(error => {
-      console.log(error);
-    })
+    fetch("/search.json")
+      .then(response => response.json())
+      .then(data => {
+        this.posts = data
+      })
+      .catch(error => {
+        console.log(error);
+      })
   },
   data() {
     return {
