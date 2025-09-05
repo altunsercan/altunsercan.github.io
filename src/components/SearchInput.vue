@@ -32,7 +32,7 @@
     </div>
     <transition name="fade">
       <div v-if="query.length > 0 && searchResultsVisible" class="normal-case absolute border left-0 right-0 w-108 text-left mb-4 mt-2 rounded-lg shadow overflow-hidden z-10 overflow-y-auto" style="max-height: 32rem">
-        <div class="flex flex-col" ref="results">
+        <div class="flex flex-col" ref="resultsRef">
           <a
             v-for="(post, index) in results"
             :key="index"
@@ -57,6 +57,8 @@
 
 
 <script>
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
 import SearchFocus from './SearchFocus'
 
 export default {
@@ -90,55 +92,119 @@ export default {
         maxPatternLength: 32,
         minMatchCharLength: 1,
         keys: ['title', 'summary']
+    }
+  }
+  setup() {
+    const query = ref('')
+    const results = ref([])
+    const posts = ref([])
+    const highlightedIndex = ref(0)
+    const searchResultsVisible = ref(false)
+    const search = ref(null)
+    const resultsRef = ref(null)
+    
+    const options = {
+      shouldSort: true,
+      includeMatches: true,
+      threshold: 0.5,
+      location: 0,
+      distance: 500,
+      maxPatternLength: 32,
+      minMatchCharLength: 1,
+      keys: ['title', 'summary']
+    }
+
+    onMounted(async () => {
+      try {
+        const response = await axios('/search.json')
+        posts.value = response.data
+      } catch (error) {
+        console.error('Failed to load search index:', error)
+      }
+    })
+
+    const reset = () => {
+      query.value = ''
+      highlightedIndex.value = 0
+    }
+
+    const softReset = () => {
+      highlightedIndex.value = 0
+      searchResultsVisible.value = true
+    }
+
+    const performSearch = async () => {
+      if (query.value.trim() === '') {
+        results.value = []
+        return
+      }
+
+      try {
+        let Fuse
+        if (window.Fuse) {
+          Fuse = window.Fuse
+        } else {
+          const FuseModule = await import('fuse.js')
+          Fuse = FuseModule.default || FuseModule
+          window.Fuse = Fuse
+        }
+        
+        const fuse = new Fuse(posts.value, options)
+        results.value = fuse.search(query.value)
+      } catch (error) {
+        console.error('Search error:', error)
+        results.value = []
       }
     }
-  },
-  methods: {
-    reset() {
-      this.query = ''
-      this.highlightedIndex = 0
-    },
-    softReset() {
-      this.highlightedIndex = 0
-      this.searchResultsVisible = true
-    },
-    performSearch() {
-      if (window.Fuse) {
-        const fuse = new window.Fuse(this.posts, this.options);
-        this.results = fuse.search(this.query);
-      } else {
-        // Fallback if Fuse.js is not available
-        import('fuse.js').then((FuseModule) => {
-          const Fuse = FuseModule.default || FuseModule;
-          const fuse = new Fuse(this.posts, this.options);
-          this.results = fuse.search(this.query);
-        });
+
+    const highlightPrev = () => {
+      if (highlightedIndex.value > 0) {
+        highlightedIndex.value = highlightedIndex.value - 1
+        scrollIntoView()
       }
-    },
-    highlightPrev() {
-      if (this.highlightedIndex > 0) {
-        this.highlightedIndex = this.highlightedIndex - 1
-        this.scrollIntoView()
+    }
+
+    const highlightNext = () => {
+      if (highlightedIndex.value < results.value.length - 1) {
+        highlightedIndex.value = highlightedIndex.value + 1
+        scrollIntoView()
       }
-    },
-    highlightNext() {
-      if (this.highlightedIndex < this.results.length - 1) {
-        this.highlightedIndex = this.highlightedIndex + 1
-        this.scrollIntoView()
+    }
+
+    const scrollIntoView = () => {
+      if (resultsRef.value && resultsRef.value.children[highlightedIndex.value]) {
+        resultsRef.value.children[highlightedIndex.value].scrollIntoView({ block: 'nearest' })
       }
-    },
-    scrollIntoView() {
-      this.$refs.results.children[this.highlightedIndex].scrollIntoView({ block: 'nearest' })
-    },
-    gotoLink() {
-      if (this.results[this.highlightedIndex]) {
-        window.location = this.results[this.highlightedIndex].item.path
+    }
+
+    const gotoLink = () => {
+      if (results.value[highlightedIndex.value]) {
+        window.location = results.value[highlightedIndex.value].item.path
       }
-    },
-    focusSearch(e) {
-      if (e.key === '/') {
-        this.$refs.search.focus()
+    }
+
+    const focusSearch = (e) => {
+      if (e.key === '/' && search.value) {
+        e.preventDefault()
+        search.value.focus()
       }
+    }
+
+    return {
+      query,
+      results,
+      posts,
+      highlightedIndex,
+      searchResultsVisible,
+      search,
+      resultsRef,
+      reset,
+      softReset,
+      performSearch,
+      highlightPrev,
+      highlightNext,
+      gotoLink,
+      focusSearch
     }
   }
 }

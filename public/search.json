@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Understanding Artificial Intelligence In Games",
+    "path": "/blog/understanding-artificial-intelligence-games/",
+    "summary": "Artificial Intelligence is a broad field on its own. As you start to work on an AI project it gets highly technical and specialized very quickly. That is why there are many AI applications using variety of algorithms to solve problems. Through my experience I found out that problem dictates the algorithm heavily. As such while most of the algorithms fall into one category or another their approaches are often so distinct that learning one type of AI does not necessarily train you in another.",
+    "type": "blog"
+  },
+  {
+    "title": "Runner Fox - Sillywalk Games",
+    "path": "/portfolio/runner-fox/",
+    "summary": "Sillywalk Games wanted to produce a runner title for a hyper casual mobile game market. Runner Fox is an endless running game, in which challenges player's reflexes with accelerating difficulty.",
+    "type": "portfolio"
+  },
+  {
+    "title": "Tap Titans 2",
+    "path": "/portfolio/tap-titans-2/",
+    "summary": "Game Hive approached me as freelancer to deliver a feature on very tight deadline.",
+    "type": "portfolio"
+  },
+  {
+    "title": "Unity for Non Programmers Workshop",
+    "path": "/portfolio/unity-non-programmers-workshop/",
+    "summary": "This workshop was aimed for participants to get familiar with Unity3d Editor.",
+    "type": "portfolio"
+  }
+]

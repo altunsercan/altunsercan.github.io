@@ -3,15 +3,27 @@
 </template>
 
 <script>
+import { onMounted, onBeforeUnmount } from 'vue';
+
 export default {
-  mounted() {
-    this.handler = event => {
-      this.$emit('keyup', event)
-    }
-    window.addEventListener('keyup', this.handler)
-  },
-  beforeDestroy() {
-    window.removeEventListener('keyup', this.handler)
+  emits: ['keyup'],
+  setup(props, { emit }) {
+    let handler;
+    
+    onMounted(() => {
+      handler = (event) => {
+        emit('keyup', event);
+      };
+      window.addEventListener('keyup', handler);
+    });
+    
+    onBeforeUnmount(() => {
+      if (handler) {
+        window.removeEventListener('keyup', handler);
+      }
+    });
+    
+    return {};
   }
 }
 </script>
