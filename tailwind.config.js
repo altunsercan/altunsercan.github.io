@@ -1,4 +1,6 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       spacing: {
@@ -7,6 +9,12 @@ module.exports = {
       },
       borderWidth: {
         '14': '14px',
+      },
+      inset: {
+        '-16': '-4rem',
+        '-32': '-8rem',
+        '-64': '-16rem',
+        '-128': '-32rem',
       }
     },
     container: {
@@ -17,24 +25,18 @@ module.exports = {
         primary: 'var(--bg-background-primary)',
         secondary: 'var(--bg-background-secondary)',
         tertiary: 'var(--bg-background-tertiary)',
-
         form: 'var(--bg-background-form)',
       },
-
       copy: {
         primary: 'var(--text-copy-primary)',
         secondary: 'var(--text-copy-hover)',
       },
-
       'border-color': {
         primary: 'var(--border-border-color-primary)',
       },
-
       transparent: 'transparent',
-
       black: '#000',
       white: '#fff',
-
       green: {
         100: '#f0fff4',
         200: '#c6f6d5',
@@ -46,7 +48,6 @@ module.exports = {
         800: '#276749',
         900: '#22543d',
       },
-
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
@@ -84,18 +85,9 @@ module.exports = {
         '"Courier New"',
         'monospace',
       ],
-    },
-    right: {
-      '-16': '-4rem',
-      '-32': '-8rem',
-      '-64': '-16rem',
-      '-128': '-32rem',
     }
   },
-  variants: {
-    // Some useful comment
-  },
   plugins: [
-    // Some useful comment
+    require('@tailwindcss/typography'),
   ]
 }
