@@ -1,35 +1,91 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+const title = 'Game Developer - Sercan Altun: Unity3D, C#, Game AI, Extenject';
+const description = 'Gameplay programmer specialized in AI. Proud owner of MA. in Game Design and procedural narrative generation thesis. Using Unity3D and C# to deliver dreams.';
 
-// Test content collections
-const blogPosts = await getCollection('blog');
-const portfolioItems = await getCollection('portfolio');
-const docs = await getCollection('docs');
+// JSON-LD structured data
+const jsonLd = {
+  "@context": "http://schema.org/",
+  "@type": "AboutPage",
+  "name": "Sercan Altun | Gameplay & AI Programmer",
+  "about": {
+     "@type": "Person",
+     "jobTitle": "Gameplay & AI Programmer",
+     "name": "Sercan Altun",
+     "givenName": "Sercan",
+     "familyName": "Altun",
+     "birthPlace": "Adana, Turkey",
+     "gender": "male",
+     "nationality": "Turkish",
+     "url": "http://sercanaltun.com",
+     "sameAs": [
+       "https://www.linkedin.com/in/sercanaltun/",
+       "https://twitter.com/sercanaltun"
+     ]       
+   }
+};
 ---
 
 <BaseLayout 
-  title="Home" 
-  description="Gameplay programmer specialized in AI. Proud owner of MA. in Game Design and procedural narrative generation thesis. Using Unity3D and C# to deliver dreams."
+  title={title}
+  description={description}
 >
-  <main class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-4">Sercan Altun</h1>
-    <p class="text-xl text-copy-secondary mb-8">Game & AI Programmer</p>
-    
-    <div class="bg-background-secondary p-6 rounded-lg">
-      <h2 class="text-2xl font-bold mb-4">Astro Migration in Progress</h2>
-      <p class="mb-4">This site is currently being migrated from Gridsome to Astro.</p>
-      <p class="text-copy-secondary">The development server is running on port 8080 as configured.</p>
-      
-      <!-- Test content collections -->
-      <div class="mt-6">
-        <h3 class="text-lg font-semibold mb-2">Content Collections Status:</h3>
-        <ul class="text-sm space-y-1">
-          <li>Blog Posts: {blogPosts.length} found</li>
-          <li>Portfolio Items: {portfolioItems.length} found</li>
-          <li>Documentation: {docs.length} found</li>
-        </ul>
-      </div>
+  <!-- JSON-LD for structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+
+  <div class="hero container-inner mx-auto flex flex-col sm:flex-row justify-between py-10">
+    <div class="flex-1 text-4xl font-bold w-full text-center sm:text-left sm:mt-10 lg:mt-16 relative">
+      <div class="leading-tight">Sercan Altun</div>
+      <div class="text-green-700 leading-tight">Gameplay & AI Programmer</div>
     </div>
-  </main>
+    <div class="flex-1 lg:flex-none mt-8 sm:mt-0">
+      <img src="/sercan-altun.jpg" alt="hero" class="w-64 mx-auto lg:mx-0" />
+    </div>
+  </div> <!-- end hero -->
+
+  <div class="container-inner mx-auto pb-16">
+
+    <p class="text-lg sm:text-xl">
+      Hello there fellow human.
+    </p>
+    <p class="text-lg sm:text-xl">
+      I am Sercan Altun: video game developer, coding aficionado & part-time weirdo.
+      If you are here for checking out my work head over to portfolio. You might find something that interests you.
+    </p>
+  </div>
+
+  <div class="overflow-x-hidden">
+    <div class="projects container-inner mx-auto text-xl border-t border-gray-500 py-16 mb-16 relative">
+      <h2 class="font-bold mb-6" id="projects">Some highlighted work experience:</h2>
+
+      <div class="absolute right-0" style="top: 50px; transform: translate(100%) rotate(180deg)">
+        <svg width="170px" height="170px"><use href="#dots-triangle"></use></svg>
+      </div>
+
+      <ul class="text-lg sm:text-xl">
+        <li class="checkmark mb-6">
+          <div>Gameloft Montreal <span class="italic text-sm text-gray-500">Gameplay & AI Programmer</span></div>
+          <div class="text-lg text-gray-600">
+            Currently working on an undisclosed project.
+            <ul class="list-disc list-outside pl-6">
+              <li> Developing character AI for dungeon crawling style gameplay. Worked on creating a modular behavior tree design that would support AI customization based on skills.</li>
+              <li> Worked as product owner of a Scrum team. Organizing sprint planning meetings and daily standups.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="checkmark mb-6">
+          <div>Game Hive <span class="italic text-sm text-gray-500">Mobile Developer</span></div>
+          <div class="text-lg text-gray-600">
+            Worked as a mobile game developer in client-side team for company's flagship game Tap Titans 2.
+            <ul class="list-disc list-outside pl-6">
+              <li> Developed new features for the game and helped with code maintenance in Unity (C#). </li>
+              <li> Introduced patching techniques to improve testing process of server endpoints. Eliminated the need for introducing temporary testing code into main code base. </li>
+              <li> Profiled memory and CPU usage using Unity Profiler; found performance issues and resolved memory spike crashes. </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div> <!-- end projects -->
+  </div>
 </BaseLayout>

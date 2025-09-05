@@ -1,0 +1,102 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PaginationPosts from '../../components/PaginationPosts.vue';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  const uniqueTags = new Set<string>();
+  
+  allPosts.forEach(post => {
+    if (post.data.tags) {
+      post.data.tags.forEach(tag => {
+        uniqueTags.add(tag.toLowerCase().replace(/\s+/g, '-'));
+      });
+    }
+  });
+
+  return Array.from(uniqueTags).map(tag => ({
+    params: { tag },
+    props: { tag }
+  }));
+}
+
+const { tag } = Astro.props;
+
+// Get posts for this tag
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true && data.tags && data.tags.some(t => 
+    t.toLowerCase().replace(/\s+/g, '-') === tag
+  );
+});
+
+const sortedPosts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+// Format tag name for display
+const displayTag = tag.split('-').map(word => 
+  word.charAt(0).toUpperCase() + word.slice(1)
+).join(' ');
+
+// Format dates
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+};
+
+// Calculate reading time
+const getReadingTime = (content: string) => {
+  const wordsPerMinute = 200;
+  const wordCount = content.split(/\s+/).length;
+  return Math.ceil(wordCount / wordsPerMinute);
+};
+---
+
+<BaseLayout 
+  title={`Posts tagged "${displayTag}"`}
+  description={`Blog posts tagged with ${displayTag}`}
+>
+  <div class="container-inner mx-auto py-16">
+    <h1 class="text-4xl font-bold mb-8">Posts tagged "{displayTag}"</h1>
+    
+    {sortedPosts.length > 0 ? (
+      <div>
+        {sortedPosts.map(post => (
+          <div class="post border-gray-400 border-b mb-12">
+            <h2 class="text-3xl font-bold">
+              <a href={`/blog/${post.slug}`} class="text-copy-primary hover:text-green-700">
+                {post.data.title}
+              </a>
+            </h2>
+            <div class="text-copy-secondary mb-4">
+              <span>{formatDate(post.data.date)}</span>
+              <span> &middot; </span>
+              <span>{getReadingTime(post.body)} min read</span>
+            </div>
+
+            <div class="text-lg mb-4">
+              {post.data.summary || post.data.excerpt}
+            </div>
+
+            <div class="mb-8">
+              <a href={`/blog/${post.slug}`} class="font-bold uppercase hover:text-green-700">
+                Read More
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-16">
+        <h2 class="text-2xl font-semibold mb-4">No posts found</h2>
+        <p class="text-copy-secondary">There are no blog posts with this tag.</p>
+      </div>
+    )}
+    
+    <div class="mt-8">
+      <a href="/blog" class="font-bold uppercase hover:text-green-700">← Back to All Posts</a>
+    </div>
+  </div>
+</BaseLayout>
