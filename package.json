@@ -16,13 +16,14 @@
     "@astrojs/tailwind": "^5.1.1",
     "@astrojs/vue": "^4.5.2",
     "astro": "^4.16.9",
+    "gh-pages": "^6.1.1",
+    "postcss": "^8.5.6",
     "vue": "^3.5.12",
     "vue-fuse": "^2.2.0",
-    "vue-scrollto": "^2.20.0",
-    "gh-pages": "^6.1.1"
+    "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.14",
-    "@tailwindcss/typography": "^0.5.15"
+    "@tailwindcss/typography": "^0.5.15",
+    "tailwindcss": "^3.4.14"
   }
 }
