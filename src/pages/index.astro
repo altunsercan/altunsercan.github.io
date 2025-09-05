@@ -1,7 +1,5 @@
 ---
-// This is a placeholder index page for the Astro migration
-// The actual content will be migrated from the existing Index.vue page
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 // Test content collections
@@ -10,35 +8,28 @@ const portfolioItems = await getCollection('portfolio');
 const docs = await getCollection('docs');
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Sercan Altun - Game & AI Programmer</title>
-		<meta name="description" content="Gameplay programmer specialized in AI. Proud owner of MA. in Game Design and procedural narrative generation thesis. Using Unity3D and C# to deliver dreams." />
-	</head>
-	<body class="bg-background-primary text-copy-primary">
-		<main class="container mx-auto px-4 py-8">
-			<h1 class="text-4xl font-bold mb-4">Sercan Altun</h1>
-			<p class="text-xl text-copy-secondary mb-8">Game & AI Programmer</p>
-			
-			<div class="bg-background-secondary p-6 rounded-lg">
-				<h2 class="text-2xl font-bold mb-4">Astro Migration in Progress</h2>
-				<p class="mb-4">This site is currently being migrated from Gridsome to Astro.</p>
-				<p class="text-copy-secondary">The development server is running on port 8080 as configured.</p>
-				
-				<!-- Test content collections -->
-				<div class="mt-6">
-					<h3 class="text-lg font-semibold mb-2">Content Collections Status:</h3>
-					<ul class="text-sm space-y-1">
-						<li>Blog Posts: {blogPosts.length} found</li>
-						<li>Portfolio Items: {portfolioItems.length} found</li>
-						<li>Documentation: {docs.length} found</li>
-					</ul>
-				</div>
-			</div>
-		</main>
-	</body>
-</html>
+<BaseLayout 
+  title="Home" 
+  description="Gameplay programmer specialized in AI. Proud owner of MA. in Game Design and procedural narrative generation thesis. Using Unity3D and C# to deliver dreams."
+>
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-4">Sercan Altun</h1>
+    <p class="text-xl text-copy-secondary mb-8">Game & AI Programmer</p>
+    
+    <div class="bg-background-secondary p-6 rounded-lg">
+      <h2 class="text-2xl font-bold mb-4">Astro Migration in Progress</h2>
+      <p class="mb-4">This site is currently being migrated from Gridsome to Astro.</p>
+      <p class="text-copy-secondary">The development server is running on port 8080 as configured.</p>
+      
+      <!-- Test content collections -->
+      <div class="mt-6">
+        <h3 class="text-lg font-semibold mb-2">Content Collections Status:</h3>
+        <ul class="text-sm space-y-1">
+          <li>Blog Posts: {blogPosts.length} found</li>
+          <li>Portfolio Items: {portfolioItems.length} found</li>
+          <li>Documentation: {docs.length} found</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

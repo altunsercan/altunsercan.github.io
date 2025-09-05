@@ -31,7 +31,7 @@
 }
 
 .theme-dark .markdown-body {
-    color: #24292e;
+    color: #cbd5e0;
 }
 
 .theme-dark .search-highlighted {
@@ -53,10 +53,6 @@
   --text-copy-secondary: #e2e8f0;
 
   --border-border-color-primary:  #1a202c;
-}
-
-.theme-dark .markdown-body {
-    color: #cbd5e0;
 }
 
 .content-wrapper {

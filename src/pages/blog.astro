@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Blog" 
+  description="Blog posts about game development, AI programming, and more"
+>
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8">Blog</h1>
+    
+    <div class="space-y-6">
+      <article class="bg-background-secondary p-6 rounded-lg">
+        <h2 class="text-2xl font-semibold mb-3">
+          <a href="#" class="hover:text-green-700">Sample Blog Post</a>
+        </h2>
+        <p class="text-copy-secondary mb-3">Published on November 15, 2024</p>
+        <p class="text-copy-primary">This is a placeholder blog post for testing the layout and responsive design.</p>
+      </article>
+      
+      <article class="bg-background-secondary p-6 rounded-lg">
+        <h2 class="text-2xl font-semibold mb-3">
+          <a href="#" class="hover:text-green-700">Another Test Post</a>
+        </h2>
+        <p class="text-copy-secondary mb-3">Published on November 10, 2024</p>
+        <p class="text-copy-primary">Testing the blog layout with multiple posts to ensure proper spacing and styling.</p>
+      </article>
+    </div>
+  </main>
+</BaseLayout>
